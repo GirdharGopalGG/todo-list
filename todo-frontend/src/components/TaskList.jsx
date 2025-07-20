@@ -42,16 +42,16 @@ const TaskList = ()=>{
      return (
     <div>
       <h1>ToDo List</h1>
-      <input value={text} onChange={e => setText(e.target.value)} />
-      <button onClick={addTask}>Add</button>
+      <input className = "text" value={text} onChange={e => setText(e.target.value)} />
+      <button className="add" onClick={addTask}>Add</button>
       <ul>
         {tasks.map(task => (
           <li key={task._id}>
-            <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
+            <span className = "text" style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
               {task.text}
             </span>
-            <button onClick={() => toggleComplete(task._id)}>Toggle</button>
-            <button onClick={() => deleteTask(task._id)}>Delete</button>
+            <button className="pad" onClick={() => toggleComplete(task._id)}>Toggle</button>
+            <button className="pad" onClick={() => deleteTask(task._id)}>Delete</button>
           </li>
         ))}
       </ul>

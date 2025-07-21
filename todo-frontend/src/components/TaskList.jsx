@@ -7,7 +7,7 @@ const TaskList = ()=>{
 
 
     useEffect(()=>{
-        axios.get('http://localhost:3000/api/tasks')
+        axios.get('/api/tasks')
             .then(res => setTasks(res.data))
             .catch(err => console.log(err))
     },[])
@@ -15,14 +15,14 @@ const TaskList = ()=>{
 
 
     const addTask = ()=>{
-        axios.post('http://localhost:3000/api/tasks',{text})
+        axios.post('/api/tasks',{text})
             .then((res)=>setTasks([...tasks,res.data]))
             .catch((err)=> console.log(err))
         setText('')
     }
 
     const toggleComplete = (id)=>{
-        axios.put(`http://localhost:3000/api/tasks/${id}`)
+        axios.put(`/api/tasks/${id}`)
             .then((res)=>{
                 setTasks(tasks.map(task=>task._id===id?res.data:task))
             })
@@ -32,7 +32,7 @@ const TaskList = ()=>{
 
 
     const deleteTask = (id)=>{
-        axios.delete(`http://localhost:3000/api/tasks/${id}`)
+        axios.delete(`/api/tasks/${id}`)
             .then((res)=>{
                 setTasks(tasks.filter(task=>task._id!==id))
             })
